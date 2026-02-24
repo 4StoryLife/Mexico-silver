@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Серебряный разлом: Мексика, картели и стратегический капкан США</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a08;
+    --surface: #111110;
+    --surface2: #1a1a17;
+    --gold: #c9a84c;
+    --gold-dim: #7a6330;
+    --silver: #a8b8c8;
+    --silver-bright: #d4e4f4;
+    --red: #c0392b;
+    --red-dim: #6b1f17;
+    --text: #d4cfc8;
+    --text-dim: #7a7570;
+    --border: #2a2a25;
+    --accent: #e8d5a0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    line-height: 1.8;
+    min-height: 100vh;
+  }
+
+  .mzn-brand {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .mzn-brand::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--gold);
+  }
+
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  .wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* HEADER */
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 40px 0 32px;
+    margin-bottom: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 120px;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  .meta-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .tag {
+    background: var(--gold);
+    color: var(--bg);
+    padding: 3px 10px;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+  }
+
+  .tag.red {
+    background: var(--red);
+    color: #fff;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--silver-bright);
+  }
+
+  .subtitle {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--text-dim);
+    font-weight: 300;
+    line-height: 1.5;
+    max-width: 620px;
+  }
+
+  /* ALERT BOX */
+  .alert {
+    background: linear-gradient(135deg, #1a0f0a, #1a0a0a);
+    border-left: 3px solid var(--red);
+    padding: 20px 24px;
+    margin: 40px 0;
+    position: relative;
+  }
+
+  .alert::before {
+    content: '⚠ СИТУАЦИЯ НА 24.02.2026';
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--red);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .alert p {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #d4a0a0;
+    font-weight: 300;
+  }
+
+  /* SECTION STRUCTURE */
+  section {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--border);
+    animation: fadeIn 0.6s ease both;
+  }
+
+  section:nth-child(2) { animation-delay: 0.1s; }
+  section:nth-child(3) { animation-delay: 0.2s; }
+  section:nth-child(4) { animation-delay: 0.3s; }
+  section:nth-child(5) { animation-delay: 0.4s; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    height: 1px;
+    width: 40px;
+    background: var(--gold-dim);
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 3vw, 30px);
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 24px;
+    line-height: 1.25;
+  }
+
+  h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--silver);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 28px 0 12px;
+  }
+
+  p {
+    color: var(--text);
+    margin-bottom: 16px;
+    font-size: 15px;
+  }
+
+  p strong {
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 24px;
+    margin: 32px 0;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold), var(--red), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 28px;
+    padding-left: 20px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--gold);
+  }
+
+  .timeline-item.critical::before {
+    background: var(--red);
+    box-shadow: 0 0 12px var(--red);
+  }
+
+  .tl-date {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  .tl-date.critical {
+    color: var(--red);
+  }
+
+  .tl-text {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* METRICS GRID */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin: 32px 0;
+  }
+
+  .metric {
+    background: var(--surface);
+    padding: 24px 20px;
+    position: relative;
+  }
+
+  .metric-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .metric-value.red { color: var(--red); }
+  .metric-value.silver { color: var(--silver-bright); }
+
+  .metric-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    line-height: 1.4;
+  }
+
+  /* QUOTE / INSIGHT */
+  .insight {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--gold);
+    padding: 28px 32px;
+    margin: 32px 0;
+    position: relative;
+  }
+
+  .insight::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    color: var(--gold-dim);
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    line-height: 1;
+    opacity: 0.5;
+  }
+
+  .insight p {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 300;
+    line-height: 1.65;
+    margin: 0;
+    padding-top: 8px;
+  }
+
+  /* MECHANISM BOX */
+  .mechanism {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 0;
+    margin: 32px 0;
+    overflow: hidden;
+  }
+
+  .mechanism-header {
+    background: var(--surface2);
+    padding: 12px 20px;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--silver);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mechanism-body {
+    padding: 24px 20px;
+  }
+
+  .chain {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .chain-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .chain-step:last-child { border-bottom: none; }
+
+  .chain-n {
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 500;
+    min-width: 24px;
+    padding-top: 2px;
+  }
+
+  .chain-text {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.55;
+  }
+
+  .chain-text strong { color: var(--silver-bright); }
+
+  /* SCENARIOS */
+  .scenarios {
+    display: grid;
+    gap: 16px;
+    margin: 32px 0;
+  }
+
+  .scenario {
+    border: 1px solid var(--border);
+    padding: 24px;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+
+  .scenario:hover { border-color: var(--gold-dim); }
+
+  .scenario-n {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .scenario-n.bull { color: #4a9a6a; }
+  .scenario-n.bear { color: var(--red); }
+  .scenario-n.black { color: var(--silver); }
+
+  .scenario h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .scenario p {
+    font-size: 14px;
+    color: var(--text-dim);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .probability {
+    display: inline-block;
+    font-size: 11px;
+    padding: 3px 10px;
+    margin-top: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  .prob-low { background: rgba(74,154,106,0.15); color: #4a9a6a; border: 1px solid rgba(74,154,106,0.3); }
+  .prob-med { background: rgba(201,168,76,0.15); color: var(--gold); border: 1px solid rgba(201,168,76,0.3); }
+  .prob-high { background: rgba(192,57,43,0.15); color: var(--red); border: 1px solid rgba(192,57,43,0.3); }
+
+  /* ACTION BLOCK */
+  .action-block {
+    background: linear-gradient(135deg, #0f140f, #0a100a);
+    border: 1px solid #2a3a2a;
+    border-left: 3px solid #4a9a6a;
+    padding: 28px 28px;
+    margin: 32px 0;
+  }
+
+  .action-block::before {
+    content: '// ДЕЙСТВИЯ ДЛЯ ИНВЕСТОРА';
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: #4a9a6a;
+    margin-bottom: 20px;
+  }
+
+  .action-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .action-list li {
+    display: flex;
+    gap: 14px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text);
+    align-items: flex-start;
+  }
+
+  .action-list li::before {
+    content: '→';
+    color: #4a9a6a;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .action-list li strong { color: var(--silver-bright); }
+
+  /* FOOTER */
+  footer {
+    padding: 48px 0 60px;
+    text-align: center;
+  }
+
+  .footer-line {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 24px;
+  }
+
+  footer p {
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+  }
+
+  /* DIVIDER */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 40px 0;
+    color: var(--border);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* HIGHLIGHT TEXT */
+  .hl { color: var(--silver-bright); }
+  .hl-gold { color: var(--gold); }
+  .hl-red { color: #e07070; }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .metrics { grid-template-columns: 1fr 1fr; }
+    .insight { padding: 20px 20px 20px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <header>
+    <div class="mzn-brand">MZN INVEST</div>
+    <div class="meta-row">
+      <span class="tag red">Срочный разбор</span>
+      <span class="tag">Commodities</span>
+      <span>24 февраля 2026</span>
+      <span>·</span>
+      <span class="tag" style="background:transparent;border:1px solid var(--gold-dim);color:var(--gold);">Закрытое комьюнити</span>
+    </div>
+    <h1>Серебряный<br><em>разлом</em></h1>
+    <p class="subtitle">Мексика, картели и стратегический капкан, который США сами себе построили — пока СМИ рассказывают тебе про перестрелки</p>
+  </header>
+
+  <div class="alert">
+    <p>Вчера, 23 февраля, мексиканские военные ликвидировали Эль Менчо — лидера CJNG. В течение 24 часов три штата вошли в режим блокады. Магистрали перекрыты. Транспортировка серебра физически невозможна. Это не криминальная хроника. Это структурный кризис глобального рынка.</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <section>
+    <div class="section-label">01 — Контекст</div>
+    <h2>Почему это не просто очередная мексиканская разборка</h2>
+
+    <p>Когда CNN или Reuters дают заголовок <strong>«Мексиканские военные ликвидировали босса картеля»</strong> — это не ложь. Это просто верхний слой. Журналист видит событие. Аналитик видит структуру. Инвестор должен видеть <strong>механизм причинно-следственных связей</strong>, которые этот ивент запускает.</p>
+
+    <p>Чтобы понять механизм — нужна одна цифра: <span class="hl-gold">70%</span>. Именно столько серебра США закупают за рубежом. И больше половины этого объёма — из Мексики. Это не случайность и не удобство. Это структурная зависимость, сложившаяся за десятилетия.</p>
+
+    <p>Теперь добавь к этому то, что произошло в последние месяцы.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="tl-date">Ноябрь 2025</div>
+        <div class="tl-text">США официально включают серебро в список <strong>критически важных минералов</strong>. Геологическая служба США прямым текстом: бесперебойные поставки — вопрос выживания оборонки, полупроводников, солнечной энергетики, электромобилей.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">Январь 2026</div>
+        <div class="tl-text">Запуск стратегического проекта <strong>«Хранилище»</strong> — аналог нефтяного SPR, но для критических минералов. США начинают формировать физические запасы. Спрос на серебро институционально фиксируется на уровне государства.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">23 января 2026</div>
+        <div class="tl-text">Из охраняемого комплекса Vizla Silver в Синалоа похищены <strong>10 ключевых сотрудников</strong> — инженеры, геологи, охрана. Пятеро найдены мёртвыми. Остальные пропали. Отрасль входит в режим ЧП.</div>
+      </div>
+      <div class="timeline-item critical">
+        <div class="tl-date critical">23 февраля 2026 — точка невозврата</div>
+        <div class="tl-text">Ликвидация Эль Менчо. Блокада трёх штатов. Полный паралич логистики. <strong>Тот самый сценарий</strong>, о котором предупреждала геологическая служба — остановка импорта серебра из Мексики — реализовался в реальном времени.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section>
+    <div class="section-label">02 — Механика</div>
+    <h2>Как именно ломается цепочка поставок</h2>
+
+    <p>Рынок серебра — это не биржевая абстракция. В основе лежит физический металл, который нужно добыть, переработать, перевезти и поставить на склад. Когда любое звено рвётся — рвётся всё. Разберём, что именно произошло с каждым звеном.</p>
+
+    <div class="mechanism">
+      <div class="mechanism-header">// Каскад разрушения цепочки — январь → февраль 2026</div>
+      <div class="mechanism-body">
+        <div class="chain">
+          <div class="chain-step">
+            <span class="chain-n">01</span>
+            <span class="chain-text"><strong>Кадровый голод.</strong> После похищений Vizla Silver высококлассные геологи и инженеры массово покидают опасные регионы. Нет специалистов — нет нормальной добычи. Мощности падают.</span>
+          </div>
+          <div class="chain-step">
+            <span class="chain-n">02</span>
+            <span class="chain-text"><strong>Рост издержек через «крышевание».</strong> Шахты платят картелям под видом социальных отчислений. Маржа сжимается. Компании с высоким долгом или низкой рентабельностью оказываются в предбанкротном состоянии.</span>
+          </div>
+          <div class="chain-step">
+            <span class="chain-n">03</span>
+            <span class="chain-text"><strong>Маскировка металла.</strong> Чтобы не быть ограбленными на дорогах, шахтёры перестали выплавлять слитки на месте. Начали вывозить необработанную руду, которая выглядит как грязь. Это <strong>выкачивает физический металл с открытого рынка</strong> — он идёт напрямую конечным потребителям.</span>
+          </div>
+          <div class="chain-step">
+            <span class="chain-n">04</span>
+            <span class="chain-text"><strong>Теневые контракты.</strong> Крупные производители заключают внебиржевые сделки с такими покупателями, как Samsung, и вывозят серебро военно-транспортной авиацией. Биржевые склады не пополняются. COMEX и CME сидят на голодном пайке.</span>
+          </div>
+          <div class="chain-step">
+            <span class="chain-n">05</span>
+            <span class="chain-text"><strong>Исчезновение страхования.</strong> Страховщики отказываются от транспортных контрактов в мексиканских регионах — риск стал некоммерческим. Без страховки конвой не выйдет. Логистика встала.</span>
+          </div>
+          <div class="chain-step">
+            <span class="chain-n">06</span>
+            <span class="chain-text"><strong>Физический коллапс на COMEX.</strong> Запасы тают. Инвесторы забирают металл. Мартовские контракты нужно закрывать физическим серебром, которого просто нет на складах. Это прямой путь к <strong>squeeze — принудительному закрытию позиций по рыночной цене.</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="insight">
+      <p>Парадокс в том, что США сами ускорили кризис. Объявив серебро стратегическим активом и запустив «Хранилище», они создали институциональный спрос — при том, что 50%+ поставок зависит от страны с нестабильной безопасностью. Это не просчёт. Это структурная ловушка, которую строили годами.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section>
+    <div class="section-label">03 — Анатомия рынка</div>
+    <h2>Два типа компаний. Один кризис. Противоположные последствия.</h2>
+
+    <p>Главная ошибка большинства — думать, что «мексиканские горнодобывающие компании» — это однородная категория. Это не так. Перед тем как принять любое решение по позиции, нужно чётко понимать <strong>бизнес-модель конкретной компании</strong>.</p>
+
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-value red">⛏</div>
+        <div class="metric-label">Классические майнеры<br><br>Физически добывают металл. Держат людей на земле. Несут операционные расходы. <strong>Прямо сейчас под ударом:</strong> не могут транспортировать, не могут продавать, несут расходы на безопасность.</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value silver">♦</div>
+        <div class="metric-label">Роялти-компании<br><br>Получают фиксированную комиссию с каждой добытой унции. Людей на земле нет. Конвои защищать не надо. Задетые кризисом — <strong>значительно меньше.</strong> Но не нулевой риск: если добыча встала — комиссий нет.</div>
+      </div>
+    </div>
+
+    <h3>Что проверить прямо сейчас</h3>
+    <p>По каждой позиции задай себе три вопроса:</p>
+    <p><strong>1. Это майнер или роялти?</strong> Ответ меняет всё.</p>
+    <p><strong>2. Какая доля выручки генерируется из мексиканских активов?</strong> Если больше 30% — позиция под острым стрессом.</p>
+    <p><strong>3. Каков долговой профиль?</strong> Компания с высоким левереджем и просевшей выручкой — кандидат на кризис ликвидности. Роялти-компании с диверсифицированным портфелем — совсем другая история.</p>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section>
+    <div class="section-label">04 — Сценарии</div>
+    <h2>Три пути. Один уже выглядит наиболее вероятным.</h2>
+
+    <div class="scenarios">
+      <div class="scenario">
+        <div class="scenario-n bull">// Сценарий A — Бычий</div>
+        <h4>Конфликт локализован, картели договариваются</h4>
+        <p>Вакуум власти после ликвидации Эль Менчо быстро заполняется одной доминирующей группировкой. Логистика возобновляется в течение 2–4 недель. Акции мексиканских майнеров отскакивают от локальных минимумов. Физический спред на COMEX сужается.</p>
+        <span class="probability prob-low">Вероятность: низкая — 20%</span>
+      </div>
+
+      <div class="scenario">
+        <div class="scenario-n bear">// Сценарий B — Медвежий</div>
+        <h4>Война за территорию затягивается на месяцы</h4>
+        <p>Несколько группировок входят в открытую войну за освободившуюся территорию CJNG. Логистика заморожена на 1–3 месяца. Майнеры фиксируют убытки, часть приостанавливает операции. COMEX переходит в режим хронического дефицита. Цена на физическое серебро устойчиво расходится с фьючерсной.</p>
+        <span class="probability prob-high">Вероятность: высокая — 55%</span>
+      </div>
+
+      <div class="scenario">
+        <div class="scenario-n black">// Сценарий C — Геополитический</div>
+        <h4>США прямо или косвенно вмешиваются</h4>
+        <p>Серебро — официально критический минерал. Остановка импорта из Мексики — официально угроза нацбезопасности. Трамп может передавать разведданные мексиканским военным, вводить санкционное давление на картели через финансовую систему, или выдвигать ультиматумы мексиканскому правительству. Любой из этих шагов создаёт резкие движения и в политике, и в котировках.</p>
+        <span class="probability prob-med">Вероятность: средняя — 25%</span>
+      </div>
+    </div>
+
+    <p><span class="hl-gold">Ключевой сигнал для мониторинга:</span> динамика складских запасов COMEX (публикуются ежедневно). Если продолжат падать — сценарий B подтверждается. Если резко остановятся или вырастут — либо A, либо теневые поставки нашли обходной маршрут.</p>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section>
+    <div class="section-label">05 — Действия</div>
+    <h2>Что делать инвестору, пока шум не утих</h2>
+
+    <div class="action-block">
+      <ul class="action-list">
+        <li><strong>Аудит позиций по типу бизнес-модели.</strong> Разделить портфель на майнеров и роялти-компании. Для каждого майнера посчитать долю мексиканской выручки. Это приоритет №1 сегодня.</li>
+        <li><strong>Мониторинг складских запасов COMEX ежедневно.</strong> Это реальный барометр кризиса, не заголовки СМИ. Данные публичны. Смотреть в динамике, а не в абсолютных значениях.</li>
+        <li><strong>Физическое серебро vs. бумажные инструменты.</strong> Если ты удерживаешь ETF или фьючерсы — понимай, что ты держишь «бумагу» в момент, когда физический металл в дефиците. Спред между физическим и бумажным будет расширяться. Это и риск, и возможность.</li>
+        <li><strong>Роялти-компании с диверсифицированным портфелем — буфер.</strong> Они переживут кризис с меньшими потерями и могут стать местом укрытия внутри сектора. Но смотреть на конкретные контракты и юрисдикции, не на категорию в целом.</li>
+        <li><strong>Не торговать на эмоциях от новостного фона.</strong> Каждое заявление мексиканского правительства о «нормализации» будет создавать шорт-сквизы и откаты. Реальность — склады COMEX. Это единственный факт, который нельзя пиарить.</li>
+        <li><strong>Геополитический триггер отслеживать отдельно.</strong> Любое официальное заявление Трампа о Мексике и серебре — это мгновенный волатильный ивент. Иметь чёткий план: что делать при резком движении вверх и вниз.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONCLUSION -->
+  <section style="border-bottom: none;">
+    <div class="section-label">06 — Вывод</div>
+    <h2>Что это всё говорит нам о рынке</h2>
+
+    <p>Мексиканский кризис — это первый публичный стресс-тест той конструкции, которую США выстраивали последние месяцы. Они признали серебро стратегическим — и тем самым нарисовали мишень на своей уязвимости. Теперь любая дестабилизация в Мексике автоматически становится <strong>геополитическим событием первого порядка</strong>.</p>
+
+    <p>Для инвестора это означает следующее. Рынок серебра перестал быть просто commodities-историей. Он стал пересечением геополитики, военно-промышленного комплекса США, энергетического перехода и латиноамериканской нестабильности. <span class="hl-gold">Всё это — в одном активе.</span></p>
+
+    <p>СМИ дадут тебе криминальную хронику. Твоя задача — видеть <strong>структуру, а не событие.</strong> Структура говорит о том, что этот кризис не случаен, не изолирован и не краткосрочен. Он логически вытекает из того, что строилось месяцами.</p>
+
+    <div class="insight">
+      <p>Рынок — это не лента новостей. Это архитектура зависимостей. Тот, кто понимает архитектуру, читает события до того, как их напишут. Именно это и называется информационным преимуществом.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-line"></div>
+    <p style="letter-spacing:0.3em; color: var(--gold); font-size:12px; margin-bottom:8px;">MZN INVEST</p>
+    <p>Закрытый аналитический материал · 24 февраля 2026</p>
+    <p style="margin-top: 8px; font-size: 11px;">Не является инвестиционной рекомендацией. Только аналитика и структурное понимание.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
